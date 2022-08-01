@@ -45,7 +45,7 @@ def interactive_plot():
     #x_axis_val = col1.selectbox('Select the X-axis', options=df['target'].value_counts() [1])
     #y_axis_val = col2.selectbox('Select the Y-axis', options=df['target'].value_counts() [0])
 
-    plot = px.scatter(df, x=, y=)
+    plot = px.scatter(df, x=x_axis_val, y=y_axis_val)
     st.plotly_chart(plot, use_container_width=True)
 
 # Add a title and intro text
