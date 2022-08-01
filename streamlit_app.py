@@ -15,16 +15,15 @@ def home(uploaded_file):
         st.header('To begin please upload a file')
 
 def data_summary():
-    st.header('Statistics of Dataframe')
+    st.header('Estatísticas do Dataframe')
     st.write(df.describe())
 
 def data_header():
-    st.header('Header of Dataframe')
+    st.header('Cabeçalho do Dataframe')
     st.write(df['target'].value_counts() [0])
 
 def displayplot():
     st.header('Plot of Data')
-    
     fig, ax = plt.subplots(1,1)
     ax.scatter(x=df['target'].value_counts() [0], y=df['target'].value_counts() [1])
     ax.set_xlabel('target')
