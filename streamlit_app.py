@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 # Functions for each of the pages
 def home(uploaded_file):
     if uploaded_file:
-        st.header('Begin exploring the data using the menu on the left')
+        st.header('Comece a explorar os dados usando o menu à esquerda')
     else:
         st.header('To begin please upload a file')
 
@@ -56,11 +56,11 @@ st.title('Explorador de Dados')
 st.text('Este é um aplicativo web permite a exploração de dados em vários formatos de gráficos')
 
 # Sidebar setup
-st.sidebar.title('Sidebar')
+st.sidebar.title('Área lateral')
 upload_file = 'https://drive.google.com/u/0/uc?id=1HXq9mczY-5OpFaXK3kk8zAgFEgEgF3jt&export=download'
 #Sidebar navigation
-st.sidebar.title('Navigation')
-options = st.sidebar.radio('Select what you want to display:', ['Home', 'Resumo de Dados', 'Cabeçalho de dados', 'Gráfico de dispersão', 'Gráfico', 'Interactive Plots'])
+st.sidebar.title('Navigação')
+options = st.sidebar.radio('Selecione o que deseja exibir:', ['Home', 'Resumo de Dados', 'Cabeçalho de dados', 'Gráfico de dispersão', 'Gráfico', 'Interactive Plots'])
 
 # Check if file has been uploaded
 if upload_file is not None:
