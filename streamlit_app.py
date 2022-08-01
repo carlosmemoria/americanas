@@ -36,7 +36,7 @@ def bar_plot():
 
     #Tipos de variaveis
     fig = px.bar(x = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
-    y = ['Atende','Não atende'],
+    y = ['Não atende','Atende'],
     orientation='h', title=" Tipos de dados ",
     labels={'x':'Quantidade','y':'Condição'},width=800, height=400)
 
@@ -52,8 +52,8 @@ def interactive_plot():
     st.plotly_chart(plot, use_container_width=True)
 
 # Add a title and intro text
-st.title('Earthquake Data Explorer')
-st.text('This is a web app to allow exploration of Earthquake Data')
+st.title('Explorador de Dados')
+st.text('Este é um aplicativo web permite a exploração de dados em vários formatos de gráficos')
 
 # Sidebar setup
 st.sidebar.title('Sidebar')
