@@ -20,7 +20,7 @@ def data_summary():
 
 def data_header():
     st.header('Header of Dataframe')
-    st.write(df['target'].value_counts() [1])
+    st.write(df['target'].value_counts() [0])
 
 def displayplot():
     st.header('Plot of Data')
