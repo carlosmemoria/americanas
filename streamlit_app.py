@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 # Functions for each of the pages
 def home(uploaded_file):
     if uploaded_file:
-        st.header('Begin exploring the data using the menu on the left')
+        st.header('Comece a explorar os dados usando o menu à esquerda')
     else:
         st.header('To begin please upload a file')
 
@@ -47,7 +47,9 @@ st.text('This is a web app to allow exploration of Earthquake Data')
 
 # Sidebar setup
 st.sidebar.title('Sidebar')
-upload_file = st.sidebar.file_uploader('Upload a file containing earthquake data')
+if upload_file (st.sidebar.file_uploader('Carregue um arquivo contendo dados') 
+                OR st.sidebar.radio('Select what you want to display:',['https://drive.google.com/u/0/uc?id=1HXq9mczY-5OpFaXK3kk8zAgFEgEgF3jt&export=download']))
+
 #Sidebar navigation
 st.sidebar.title('Navigation')
 options = st.sidebar.radio('Select what you want to display:', ['Home', 'Data Summary', 'Data Header', 'Scatter Plot', 'Fancy Plots'])
