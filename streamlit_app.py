@@ -35,7 +35,6 @@ def displayplot():
     st.pyplot(fig)
 n = pd.value_counts(df['target']) [0]
 e = pd.value_counts(df['target']) [1]
-def graf():
 
 pie = pd.DataFrame([['Há ocorrência',n],['Não há ocorrência',e]],columns=['Target' , 'Quant'])
 
@@ -87,6 +86,6 @@ elif options == 'Cabeçalho de dados':
 elif options == 'Gráfico de dispersão':
     displayplot()
 elif options == 'Gráfico':	
-	graf()
+	pie_chart()
 elif options == 'Interactive Plots':
     interactive_plot()
