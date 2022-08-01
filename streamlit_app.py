@@ -50,7 +50,7 @@ st.sidebar.title('Sidebar')
 upload_file = 'https://drive.google.com/u/0/uc?id=1HXq9mczY-5OpFaXK3kk8zAgFEgEgF3jt&export=download'
 #Sidebar navigation
 st.sidebar.title('Navigation')
-options = st.sidebar.radio('Select what you want to display:', ['Home', 'Data Summary', 'Data Header', 'Scatter Plot', 'Fancy Plots'])
+options = st.sidebar.radio('Select what you want to display:', ['Home', 'Resumo de Dados', 'Cabeçalho de dados', 'Gráfico de dispersão', 'Interactive Plots'])
 
 # Check if file has been uploaded
 if upload_file is not None:
@@ -59,11 +59,11 @@ if upload_file is not None:
 # Navigation options
 if options == 'Home':
     home(upload_file)
-elif options == 'Data Summary':
+elif options == 'Resumo de Dados':
     data_summary()
-elif options == 'Data Header':
+elif options == 'Cabeçalho de dados':
     data_header()
-elif options == 'Scatter Plot':
+elif options == 'Gráfico de dispersão':
     displayplot()
 elif options == 'Interactive Plots':
     interactive_plot()
