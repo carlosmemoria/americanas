@@ -61,7 +61,7 @@ options = st.sidebar.radio('Select what you want to display:', ['Home', 'Resumo 
 
 # Check if file has been uploaded
 if upload_file is not None:
-    df = pd.read_parquet(upload_file, , index_col=[0])
+    df = pd.read_parquet(upload_file, index_col=[0])
 
 # Navigation options
 if options == 'Home':
