@@ -36,9 +36,9 @@ def bar_plot():
 
     #Tipos de variaveis
     fig = px.bar(x = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
-    y = ['Categóricas','Numéricas'],
+    y = ['Atende','Não atende'],
     orientation='h', title=" Tipos de dados ",
-    labels={'x':'Quantidade','y':'Variaves'},width=800, height=400)
+    labels={'x':'Quantidade','y':'Condição'},width=800, height=400)
 
     st.plotly_chart(fig)	
 	
