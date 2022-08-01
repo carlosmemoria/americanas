@@ -34,8 +34,8 @@ def displayplot():
 
 def bar_plot():
 
-	x = ["car", "bike", "bus", "truck", "bicycle"]
-	y = [10, 5, 8, 4, 2]
+	x = ["sim", "não"]
+	y = [0, 1]
 	bar(x, y,leg =false) 
 
 
@@ -61,7 +61,7 @@ options = st.sidebar.radio('Select what you want to display:', ['Home', 'Resumo 
 
 # Check if file has been uploaded
 if upload_file is not None:
-    df = pd.read_parquet(upload_file, index_col=[0])
+    df = pd.read_parquet(upload_file)
 
 # Navigation options
 if options == 'Home':
