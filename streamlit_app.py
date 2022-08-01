@@ -26,9 +26,9 @@ def displayplot():
     st.header('Plot of Data')
     
     fig, ax = plt.subplots(1,1)
-    ax.scatter(x=df['Depth'], y=df['Magnitude'])
-    ax.set_xlabel('Depth')
-    ax.set_ylabel('Magnitude')
+    ax.scatter(x=df['target'].value_counts() [0], y=df['target'].value_counts() [1])
+    ax.set_xlabel('target')
+    ax.set_ylabel('target')
     
     st.pyplot(fig)
 
