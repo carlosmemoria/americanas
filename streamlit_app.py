@@ -7,6 +7,9 @@ import plotly.express as px
 
 st.set_page_config(layout="wide")
 
+n = pd.value_counts(df['target']) [0]
+e = pd.value_counts(df['target']) [1]
+
 # Functions for each of the pages
 def home(uploaded_file):
     if uploaded_file:
@@ -26,7 +29,7 @@ def displayplot():
     st.header('Plot of Data')
     
     fig, ax = plt.subplots(1,1)
-    ax.scatter(x=df['Depth'], y=df['Magnitude'])
+    ax.scatter(x=pd.value_counts(df['target']) [0], y=pd.value_counts(df['target']) [1])
     ax.set_xlabel('Depth')
     ax.set_ylabel('Magnitude')
     
