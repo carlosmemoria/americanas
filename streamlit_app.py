@@ -34,9 +34,6 @@ def displayplot():
     
     st.pyplot(fig)
 
-n = pd.value_counts(df['target']) [0]
-e = pd.value_counts(df['target']) [1]
-
 def bar_plot():
 
 	x = ["car", "bike", "bus", "truck", "bicycle"]
