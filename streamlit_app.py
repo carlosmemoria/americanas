@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 
 st.set_page_config(layout="wide")
-
 # Functions for each of the pages
 def home(uploaded_file):
+
     if uploaded_file:
         st.header('Comece a explorar os dados usando o menu à esquerda')
     else:
@@ -52,7 +52,7 @@ def interactive_plot():
     st.plotly_chart(plot, use_container_width=True)
 
 # Add a title and intro text
-st.title('Explorador de Dados')
+st.title('Projeto de exploração de dados')
 st.text('Este é um aplicativo web permite a exploração de dados em vários formatos de gráficos')
 
 # Sidebar setup
