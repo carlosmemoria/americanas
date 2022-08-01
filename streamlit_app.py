@@ -53,7 +53,7 @@ st.sidebar.title('Navigation')
 options = st.sidebar.radio('Select what you want to display:', ['Home', 'Data Summary', 'Data Header', 'Scatter Plot', 'Fancy Plots'])
 
 # Check if file has been uploaded
-if upload_file is not None:
+#if upload_file is not None:
     df = pd.read_parquet('https://drive.google.com/u/0/uc?id=1HXq9mczY-5OpFaXK3kk8zAgFEgEgF3jt&export=download')
 
 # Navigation options
