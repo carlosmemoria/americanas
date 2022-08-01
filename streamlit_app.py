@@ -20,7 +20,7 @@ def data_summary():
 
 def data_header():
     st.header('Cabeçalho do Dataframe')
-    st.write(df['target'].value_counts() [0])
+    st.write(df.head())
 
 def displayplot():
     st.header('Plot of Data')
