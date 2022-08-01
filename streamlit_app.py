@@ -25,7 +25,7 @@ def data_header():
 def displayplot():
     st.header('Plot of Data')
     
-    fig, ax = plt.subplots(1,2)
+    fig, ax = plt.subplots(0,1)
     ax.scatter(x=df['target'].value_counts() [0], y=df['target'].value_counts() [1])
     ax.set_xlabel('target')
     ax.set_ylabel('target')
