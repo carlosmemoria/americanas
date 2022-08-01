@@ -8,7 +8,8 @@ import plotly.express as px
 st.set_page_config(layout="wide")
 n = pd.value_counts(df['target']) [0]
 e = pd.value_counts(df['target']) [1]
-
+n = pd.value_counts(df['target']) [0]
+e = pd.value_counts(df['target']) [1]
 # Functions for each of the pages
 def home(uploaded_file):
     if uploaded_file:
@@ -28,17 +29,15 @@ def displayplot():
     st.header('Plot of Data')
     
     fig, ax = plt.subplots(1,1)
-    ax.scatter(x=df['target'], y=df['target'])
-    ax.set_xlabel('target')
-    ax.set_ylabel('target')
+    ax.scatter(x=n, y=e)
+    ax.set_xlabel('n')
+    ax.set_ylabel('e')
     
     st.pyplot(fig)
 
 def graf():
 	#Distribuição dos dados da classe Y (Não existe ocorrência = n, Existe ocorrência = e)
 
-	n = pd.value_counts(df['target']) [0]
-	e = pd.value_counts(df['target']) [1]
 
 	condTrue = 'Não há ocorrência do evento que desejamos prever em '
 	condFalse = 'Existe ocorrência do evento que desejamos prever '
