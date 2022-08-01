@@ -6,8 +6,6 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 
 st.set_page_config(layout="wide")
-n = pd.value_counts(df['target']) [0]
-e = pd.value_counts(df['target']) [1]
 
 # Functions for each of the pages
 def home(uploaded_file):
