@@ -1,69 +1,54 @@
-import pickle
+# importando as bibliotecas
 import streamlit as st
- 
-# loading the trained model
-pickle_in = open('classifier.pkl', 'rb') 
-classifier = pickle.load(pickle_in)
- 
-@st.cache()
-  
-# defining the function which will make the prediction using the data which the user inputs 
-def prediction(Gender, Married, ApplicantIncome, LoanAmount, Credit_History):   
- 
-    # Pre-processing user input    
-    if Gender == "Male":
-        Gender = 0
-    else:
-        Gender = 1
- 
-    if Married == "Unmarried":
-        Married = 0
-    else:
-        Married = 1
- 
-    if Credit_History == "Unclear Debts":
-        Credit_History = 0
-    else:
-        Credit_History = 1  
- 
-    LoanAmount = LoanAmount / 1000
- 
-    # Making predictions 
-    prediction = classifier.predict( 
-        [[Gender, Married, ApplicantIncome, LoanAmount, Credit_History]])
-     
-    if prediction == 0:
-        pred = 'Rejected'
-    else:
-        pred = 'Approved'
-    return pred
-      
-  
-# this is the main function in which we define our webpage  
-def main():       
-    # front end elements of the web page 
-    html_temp = """ 
-    <div style ="background-color:yellow;padding:13px"> 
-    <h1 style ="color:black;text-align:center;">Streamlit Loan Prediction ML App</h1> 
-    </div> 
-    """
-      
-    # display the front end aspect
-    st.markdown(html_temp, unsafe_allow_html = True) 
-      
-    # following lines create boxes in which user can enter data required to make prediction 
-    Gender = st.selectbox('Gender',("Male","Female"))
-    Married = st.selectbox('Marital Status',("Unmarried","Married")) 
-    ApplicantIncome = st.number_input("Applicants monthly income") 
-    LoanAmount = st.number_input("Total loan amount")
-    Credit_History = st.selectbox('Credit_History',("Unclear Debts","No Unclear Debts"))
-    result =""
-      
-    # when 'Predict' is clicked, make the prediction and store it 
-    if st.button("Predict"): 
-        result = prediction(Gender, Married, ApplicantIncome, LoanAmount, Credit_History) 
-        st.success('Your loan is {}'.format(result))
-        print(LoanAmount)
-     
-if __name__=='__main__': 
-    main()
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+import plotly.express as px
+from PIL import Image
+
+df = pd.read_parquet('https://drive.google.com/u/0/uc?id=1HXq9mczY-5OpFaXK3kk8zAgFEgEgF3jt&export=download')
+st.dataframe(df)
+
+#Distribuição dos dados da classe Y (Não existe ocorrência = n, Existe ocorrência = e)
+
+n = pd.value_counts(df['target']) [0]
+e = pd.value_counts(df['target']) [1]
+
+condTrue = 'Não há ocorrência do evento que desejamos prever em '
+condFalse = 'Existe ocorrência do evento que desejamos prever '
+resposta = 'linhas'
+
+tam = len(df)
+
+pie = pd.DataFrame([['Há ocorrência',n],['Não há ocorrência',e]],columns=['Target' , 'Quant'])
+
+def pie_chart(data,col1,col2,title): 
+    labels = {'Não':0,'Sim':1}
+    sizes = data[col2]
+    colors = ['#e5ffcc', '#f80032']
+
+    plt.pie(sizes, labels=labels, colors=colors,
+                autopct='%1.1f%%', shadow=True, startangle=140, labeldistance =1.2)
+    plt.title( title )
+    
+    plt.axis('equal')
+    plt.show()
+
+pie_chart(pie,'Target' , 'Quant','Distribuição Percentual quanto a existência ou não de ocorrência')
+
+print("\n")
+print("{}{}{}".format(condTrue,n," "+ resposta))
+print("{}{}{}".format(condFalse,e," "+ resposta))
+print("\n")
+
+plt.bar(pie.Target,pie.Quant, color = ['#e5ffcc', '#f80032'])
+plt.title("Distribuição quanto a existência ou não de ocorrência")
+plt.xlabel("Existe ocorrência?")
+plt.ylabel('Quantidade de Registros')
+plt.show()
+#Tipos de variaveis
+fig = px.bar(x = [6,5],
+            y = ['Categóricas','Numéricas'],
+            orientation='h', title=" Tipos de dados ",
+             labels={'x':'Target','y':'Quant'},width=800, height=400)
+st.plotly_chart(fig)
