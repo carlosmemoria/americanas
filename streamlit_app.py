@@ -34,11 +34,14 @@ def displayplot():
 
 def bar_plot():
 
-	x = ["sim", "não"]
-	y = [0, 1]
-	bar(x, y,leg =false) 
+    #Tipos de variaveis
+    fig = px.bar(x = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
+    y = ['Categóricas','Numéricas'],
+    orientation='h', title=" Tipos de dados ",
+    labels={'x':'Quantidade','y':'Variaves'},width=800, height=400)
 
-
+    st.plotly_chart(fig)	
+	
 def interactive_plot():
     #col1, col2 = st.columns(2)
     
