@@ -52,3 +52,4 @@ fig = px.bar(x = [6,5],
             orientation='h', title=" Tipos de dados ",
              labels={'x':'Target','y':'Quant'},width=800, height=400)
 st.plotly_chart(fig)
+st = pie.plot(kind='hist')
