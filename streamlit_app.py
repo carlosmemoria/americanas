@@ -26,8 +26,8 @@ def displayplot():
     st.header('Plot of Data')
     fig, ax = plt.subplots(1,1)
     ax.scatter(x=df['target'].value_counts() [0], y=df['target'].value_counts() [1])
-    ax.set_xlabel('target')
     ax.set_ylabel('target')
+    ax.set_xlabel('target')
     
     st.pyplot(fig)
 
