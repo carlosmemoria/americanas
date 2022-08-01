@@ -20,7 +20,7 @@ def data_summary():
 
 def data_header():
     st.header('Header of Dataframe')
-    st.write(df.head())
+    st.write(df['target'].value_counts() [1])
 
 def displayplot():
     st.header('Plot of Data')
@@ -45,7 +45,7 @@ def interactive_plot():
     #x_axis_val = col1.selectbox('Select the X-axis', options=df['target'].value_counts() [1])
     #y_axis_val = col2.selectbox('Select the Y-axis', options=df['target'].value_counts() [0])
 
-    plot = px.scatter(df, x=upload_file['target'].value_counts() [0], y=upload_file['target'].value_counts() [1])
+    plot = px.scatter(df, x=, y=)
     st.plotly_chart(plot, use_container_width=True)
 
 # Add a title and intro text
