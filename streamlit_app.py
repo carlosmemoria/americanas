@@ -24,12 +24,19 @@ def data_header():
 
 def displayplot():
     st.header('Plot of Data')
-    fig, ax = plt.subplots(1,1)
-    ax.scatter(x= [ df['target'].value_counts() [0], df['target'].value_counts() [1] ], y = ['Não atende','Atende'])
-    ax.set_xlabel('target')
-    ax.set_ylabel('target')
-    
-    st.pyplot(fig)
+    col1, col2 = st.beta_columns(2)
+
+    with col1 :
+	fig = px.histogram(train, x= [ df['target'].value_counts() [0], df['target'].value_counts() [1] ], nbins=50, title='Sexo dos Passageiros', 
+			   labels={"Sex": 'Sexo'},width=400, height=400)
+	st.plotly_chart(fig, use_container_width=False, sharing='streamlit')
+
+    with col2 :
+	fig = px.bar(train, x= [ df['target'].value_counts() [0], df['target'].value_counts() [1] ], 
+		     y= ['Não atende','Atende'], color="Sex", title=" Sobreviventes x Sexo ",
+		     labels={'Sex': 'Sexo', 'Survived': 'Sobreviventes'},
+		     width=400, height=400)
+	st.plotly_chart(fig, use_container_width=False, sharing='streamlit')
 
 def bar_plot():
 
