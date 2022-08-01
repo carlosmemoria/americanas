@@ -33,24 +33,16 @@ def displayplot():
     ax.set_ylabel('Magnitude')
     
     st.pyplot(fig)
+
 n = pd.value_counts(df['target']) [0]
 e = pd.value_counts(df['target']) [1]
 
-pie = pd.DataFrame([['Há ocorrência',n],['Não há ocorrência',e]],columns=['Target' , 'Quant'])
+def bar_plot():
 
-def pie_chart(data,col1,col2,title): 
-    labels = {'Não':0,'Sim':1}
-    sizes = data[col2]
-    colors = ['#e5ffcc', '#f80032']
+	x = ["car", "bike", "bus", "truck", "bicycle"]
+	y = [10, 5, 8, 4, 2]
+	bar(x, y,leg =false) 
 
-    plt.pie(sizes, labels=labels, colors=colors,
-                autopct='%1.1f%%', shadow=True, startangle=140, labeldistance =1.2)
-    plt.title( title )
-    
-    plt.axis('equal')
-    plt.show()
-
-pie_chart(pie,'Target' , 'Quant','Distribuição Percentual quanto a existência ou não de ocorrência')
 
 def interactive_plot():
     col1, col2 = st.columns(2)
@@ -86,6 +78,6 @@ elif options == 'Cabeçalho de dados':
 elif options == 'Gráfico de dispersão':
     displayplot()
 elif options == 'Gráfico':	
-	pie_chart()
+	bar_plot()
 elif options == 'Interactive Plots':
     interactive_plot()
