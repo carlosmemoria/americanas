@@ -30,7 +30,9 @@ def data_describe():
 def data_header():
     st.header('Cabeçalho do Dataframe')
     st.write(df.head())
-	
+    st.write("{}{}{}".format(condTrue,n," "+ resposta))
+    st.write("{}{}{}".format(condFalse,e," "+ resposta))    
+
 def bar_plot():
 
     st.header('Gra´fico horizontall')
