@@ -25,8 +25,8 @@ def data_header():
 def displayplot():
     st.header('Plot of Data') 
     
-    fig = px.bar(x = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
-    y = ['Não atende','Atende'],
+    fig = px.bar(x = ['Não atende','Atende'],
+    y = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
     orientation='h', title=" Tipos de dados ",
     labels={'x':'Quantidade','y':'Condição'},width=800, height=400)
 
