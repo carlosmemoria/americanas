@@ -119,27 +119,27 @@ st.sidebar.title('Barra lateral')
 upload_file = 'https://drive.google.com/u/0/uc?id=1HXq9mczY-5OpFaXK3kk8zAgFEgEgF3jt&export=download'
 #Navegação na barra lateral
 st.sidebar.title('Navegação')
-options = st.sidebar.radio('Selecione o que deseja exibir:', ['Home', 'Resumo de Dados', 'Cabeçalho de dados', 'Gráfico de barras horizontal', 
-							      'Seleção aleatória de 200 entradas do dataset', 
-							      'Seleção aleatória de 50% das entradas do dataset',
-							      'Scikit Learn'])
+options = st.sidebar.radio('Selecione o que deseja exibir:', ['1. Home', '2. Resumo de Dados', '3. Cabeçalho de dados', '4. Gráfico de barras horizontal', 
+							      '5. Seleção aleatória de 200 entradas do dataset', 
+							      '6. Seleção aleatória de 50% das entradas do dataset',
+							      '7. Scikit Learn utilizando a 6° opção'])
 
 # Verifica se o arquivo foi carregado
 if upload_file is not None:
     df = pd.read_parquet(upload_file)
 
 # Opções de navegação
-if options == 'Home':
+if options == '1. Home':
     home(upload_file)
-elif options == 'Resumo de Dados':
+elif options == '2. Resumo de Dados':
     data_describe()
-elif options == 'Cabeçalho de dados':
+elif options == '3. Cabeçalho de dados':
     data_header()
-elif options == 'Gráfico de barras horizontal':	
+elif options == '4. Gráfico de barras horizontal':	
 	bar_plot()
-elif options == 'Seleção aleatória de 200 entradas do dataset':
+elif options == '5. Seleção aleatória de 200 entradas do dataset':
     bar_plot_select()
-elif options == 'Seleção aleatória de 50% das entradas do dataset':
+elif options == '6. Seleção aleatória de 50% das entradas do dataset':
     bar_plot_select_frac()
-elif options == 'Scikit Learn':
+elif options == '7. Scikit Learn utilizando a 6° opção':
     bar_plot_scikit()
