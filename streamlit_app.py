@@ -87,12 +87,13 @@ def bar_plot_select_frac():
     st.write("{}{}{}".format(condTrue,n," "+ resposta))
     st.write("{}{}{}".format(condFalse,e," "+ resposta))	
 
-def bar_plot_scikit():
 X_train, X_test, y_train, y_test = train_test_split(df.drop('target',axis=1),
                                                     df['target'],
                                                     stratify=df['target'],
                                                     test_size=0.5)    
- 
+ 	
+def bar_plot_scikit():
+
     df_y = pd.DataFrame(y_test)	
 
     st.header('Utilização da função train_test_split()')
