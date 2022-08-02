@@ -7,7 +7,7 @@ Você pode usar os arquivo requirements.txt para instalar todas as bibliotecas n
 ## Executando Streamlit
 Uma vez instalado o Streamlit, você pode executar o arquivo selecionado digitando o seguinte no prompt/terminal de comando:
 
-`streamlit run app_p1.py`
+`streamlit run streamlit_app.py`
 
 ## Fontes de dados
 | Nome do arquivo                             | Fonte                       | Link de origem                                                         |
