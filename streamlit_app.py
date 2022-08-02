@@ -1,4 +1,4 @@
-#Import the required Libraries
+#Importar as bibliotecas necessárias
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -10,7 +10,7 @@ condFalse = 'Existe ocorrência do evento que desejamos prever '
 resposta = 'linhas'
 
 st.set_page_config(layout="wide")
-# Functions for each of the pages
+# Funções para cada uma das páginas
 def home(uploaded_file):
 
     if uploaded_file:
@@ -87,25 +87,47 @@ def bar_plot_select_frac():
     st.write("{}{}{}".format(condTrue,n," "+ resposta))
     st.write("{}{}{}".format(condFalse,e," "+ resposta))	
 
+def bar_plot_scikit():
+    X_train, X_test, y_train, y_test = train_test_split(df.drop('target',axis=1),
+                                                    df['target'],
+                                                    stratify=df['target'],
+                                                    test_size=0.5)    
+ 
+    df_y = pd.DataFrame(y_test)	
 
-# Add a title and intro text
+    st.header('Utilização da função train_test_split()')
+    fig = px.bar(x = [ df_y['target'].value_counts() [0], df_y['target'].value_counts() [1] ],
+    y = ['Não atende','Atende'],
+    title=" Tipos de dados ",
+    labels={'x':'Quantidade','y':'Condição'},width=800, height=400)
+
+    st.plotly_chart(fig)	
+
+    n = df_y['target'].value_counts() [0]
+    e = df_y['target'].value_counts() [1]
+
+    st.write("{}{}{}".format(condTrue,n," "+ resposta))
+    st.write("{}{}{}".format(condFalse,e," "+ resposta))	
+	
+# Título e texto de introdução
 st.title('Projeto de exploração de dados')
 st.text('Este é um aplicativo web permite a exploração de dados em vários formatos de gráficos')
 
-# Sidebar setup
+# Configuração da barra lateral
 st.sidebar.title('Área lateral')
 upload_file = 'https://drive.google.com/u/0/uc?id=1HXq9mczY-5OpFaXK3kk8zAgFEgEgF3jt&export=download'
-#Sidebar navigation
+#Navegação na barra lateral
 st.sidebar.title('Navegação')
 options = st.sidebar.radio('Selecione o que deseja exibir:', ['Home', 'Resumo de Dados', 'Cabeçalho de dados', 'Gráfico de barras horizontal', 
 							      'Seleção aleatória de 200 entradas do dataset', 
-							      'Seleção aleatória de 50% das entradas do dataset'])
+							      'Seleção aleatória de 50% das entradas do dataset',
+							      'Utilização da função train_test_split()'])
 
-# Check if file has been uploaded
+# Verifica se o arquivo foi carregado
 if upload_file is not None:
     df = pd.read_parquet(upload_file)
 
-# Navigation options
+# Opções de navegação
 if options == 'Home':
     home(upload_file)
 elif options == 'Resumo de Dados':
@@ -118,3 +140,5 @@ elif options == 'Seleção aleatória de 200 entradas do dataset':
     bar_plot_select()
 elif options == 'Seleção aleatória de 50% das entradas do dataset':
     bar_plot_select_frac()
+elif options == 'Utilização da função train_test_split()':
+    bar_plot_scikit()
