@@ -90,9 +90,9 @@ def bar_plot_select_frac():
     
  	
 def bar_plot_scikit():
-    X_train, X_test, y_train, y_test = train_test_split(df.drop('target',axis=1),
-                                                    df['target'],
-                                                    stratify=df['target'],
+    X_train, X_test, y_train, y_test = train_test_split(df_sample.drop('target',axis=1),
+                                                    df_sample['target'],
+                                                    stratify=df_sample['target'],
                                                     test_size=0.5)
     df_y = pd.DataFrame(y_test)	
 
