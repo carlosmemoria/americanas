@@ -22,15 +22,16 @@ def data_header():
     st.header('Cabeçalho do Dataframe')
     st.write(df.head())
 
-def displayplot():
-    st.header('Gráfico de Pizza') 
-    labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
-    sizes = [15, 30, 45, 10]
-    explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+def displayplot(data,col1,col2,title): 
+    labels = {'Não':0,'Sim':1}
+    sizes = data[col2]
+    colors = ['#e5ffcc', '#f80032']
 
     fig1, ax1 = plt.subplots()
-    ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
-   	shadow=True, startangle=90)
+    ax1.pie(sizes, labels=labels, colors=colors,
+                autopct='%1.1f%%', shadow=True, startangle=140, 
+            labeldistance =1.2)
+    plt.title( title )
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
     st.pyplot(fig1)
