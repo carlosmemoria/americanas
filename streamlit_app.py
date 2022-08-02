@@ -24,7 +24,7 @@ def data_header():
 
 def displayplot(): 
 	    # Graph (Pie Chart in Sidebar)
-	df_target = df[['id', 'target']].groupby('target').count() / len(df)
+	df_target = df[['target', 'target']].groupby('target').count() / len(df)
 	fig_target = go.Figure(data=[go.Pie(labels=df_target.index,
 					    values=df['target'].value_counts(),
 					    hole=.3)])
