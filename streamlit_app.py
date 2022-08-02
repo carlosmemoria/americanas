@@ -23,16 +23,15 @@ def data_header():
     st.write(df.head())
 
 def displayplot(): 
-    x_target = df['target'].value_counts() [0], df['target'].value_counts() [1],
-    y_target =  ['Não atende','Atende'],
-    y = ['Não atende','Atende'],
-    labels = ['Não atende','Atende'],
-    sizes = [x_target, y_target],
+    labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
+    #sizes = [15, 30, 45, 10]
     explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
-
+    #sizes, explode=explode, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90
     fig1, ax1 = plt.subplots()
-    ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
-        shadow=True, startangle=90)
+    ax1.pie(x = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
+    y = ['Não atende','Atende'],
+    title=" Tipos de dados ",
+    labels={'x':'Quantidade','y':'Condição'},width=800, height=400)
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
     st.pyplot(fig1)
