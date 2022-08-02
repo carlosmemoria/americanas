@@ -24,14 +24,19 @@ def data_describe():
 
     n = df['target'].value_counts() [0]
     e = df['target'].value_counts() [1]
+	
     st.write("{}{}{}".format(condTrue,n," "+ resposta))
     st.write("{}{}{}".format(condFalse,e," "+ resposta))
 
 def data_header():
     st.header('Cabeçalho do Dataframe')
     st.write(df.head())
+	
+    n = df['target'].value_counts() [0]
+    e = df['target'].value_counts() [1]
+	
     st.write("{}{}{}".format(condTrue,n," "+ resposta))
-    st.write("{}{}{}".format(condFalse,e," "+ resposta))    
+    st.write("{}{}{}".format(condFalse,e," "+ resposta))	
 
 def bar_plot():
 
@@ -43,6 +48,12 @@ def bar_plot():
 
     st.plotly_chart(fig)	
 
+    n = df['target'].value_counts() [0]
+    e = df['target'].value_counts() [1]
+
+    st.write("{}{}{}".format(condTrue,n," "+ resposta))
+    st.write("{}{}{}".format(condFalse,e," "+ resposta))
+
 #def displayplot(): 
 	
 def interactive_plot():
@@ -53,6 +64,12 @@ def interactive_plot():
 
     plot = px.scatter(df, x=x_axis_val, y=y_axis_val)
     st.plotly_chart(plot, use_container_width=True)
+	
+    n = df['target'].value_counts() [0]
+    e = df['target'].value_counts() [1]
+	
+    st.write("{}{}{}".format(condTrue,n," "+ resposta))
+    st.write("{}{}{}".format(condFalse,e," "+ resposta))	
 
 # Add a title and intro text
 st.title('Projeto de exploração de dados')
