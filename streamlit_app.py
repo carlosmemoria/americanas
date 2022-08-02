@@ -23,18 +23,18 @@ def data_header():
     st.write(df.head())
 
 def displayplot(): 
-    labels = {'Não':0,'Sim':1}
-    sizes = x = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
-    y = ['Não atende','Atende']
-    colors = ['#e5ffcc', '#f80032']
+	    # Pie chart, where the slices will be ordered and plotted counter-clockwise:
+	labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
+	sizes = [15, 30, 45, 10]
+	explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
-    fig1, ax1 = plt.subplots()
-    ax1.pie(sizes, labels=labels, colors=colors,
+	fig1, ax1 = plt.subplots()
+	ax1.pie(sizes, labels=labels, colors=colors,
                 autopct='%1.1f%%', shadow=True, startangle=140, 
             labeldistance =1.2)
-    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+	ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
-    st.pyplot(fig1)
+        st.pyplot(fig1)
 
 def bar_plot():
 
