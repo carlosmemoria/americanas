@@ -40,7 +40,7 @@ def data_header():
 
 def bar_plot():
 
-    st.header('Gra´fico horizontall')
+    st.header('Gráfico horizontall')
     fig = px.bar(x = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
     y = ['Não atende','Atende'],
     title=" Tipos de dados ",
@@ -56,18 +56,19 @@ def bar_plot():
 
 #def displayplot(): 
 	
-def interactive_plot():
-    col1, col2 = st.columns(2)
-    
-    x_axis_val = col1.selectbox('Select the X-axis', options=df['target'].value_counts() [1])
-    y_axis_val = col2.selectbox('Select the Y-axis', options=df['target'].value_counts() [0])
+def bar_plot():
+    df_sample = df.sample(n=200)	
+    st.header('Seleção aleatória de 200 entradas do dataset')
+    fig = px.bar(x = [ df_sample['target'].value_counts() [0], df_sample['target'].value_counts() [1] ],
+    y = ['Não atende','Atende'],
+    title=" Tipos de dados ",
+    labels={'x':'Quantidade','y':'Condição'},width=800, height=400)
 
-    plot = px.scatter(df, x=x_axis_val, y=y_axis_val)
-    st.plotly_chart(plot, use_container_width=True)
-	
-    n = df['target'].value_counts() [0]
-    e = df['target'].value_counts() [1]
-	
+    st.plotly_chart(fig)	
+
+    n = df_sample['target'].value_counts() [0]
+    e = df_sample['target'].value_counts() [1]
+
     st.write("{}{}{}".format(condTrue,n," "+ resposta))
     st.write("{}{}{}".format(condFalse,e," "+ resposta))	
 
