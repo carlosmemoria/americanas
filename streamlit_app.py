@@ -24,9 +24,8 @@ def data_describe():
 
     n = df['target'].value_counts() [0]
     e = df['target'].value_counts() [1]
-
-    print("{}{}{}".format(condTrue,n," "+ resposta))
-    print("{}{}{}".format(condFalse,e," "+ resposta))
+    st.write("{}{}{}".format(condTrue,n," "+ resposta))
+    st.write("{}{}{}".format(condFalse,e," "+ resposta))
 
 def data_header():
     st.header('Cabeçalho do Dataframe')
