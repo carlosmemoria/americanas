@@ -5,9 +5,6 @@ import matplotlib.pyplot as plt
 
 import plotly.express as px
 
-n = df['target'].value_counts() [0]
-e = df['target'].value_counts() [1]
-
 condTrue = 'Não há ocorrência do evento que desejamos prever em '
 condFalse = 'Existe ocorrência do evento que desejamos prever '
 resposta = 'linhas'
@@ -24,6 +21,9 @@ def home(uploaded_file):
 def data_describe():
     st.header('Estatísticas do Dataframe')
     st.write(df.describe())
+
+    n = df['target'].value_counts() [0]
+    e = df['target'].value_counts() [1]
 
     print("{}{}{}".format(condTrue,n," "+ resposta))
     print("{}{}{}".format(condFalse,e," "+ resposta))
