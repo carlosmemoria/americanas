@@ -22,7 +22,7 @@ def data_header():
     st.header('Cabeçalho do Dataframe')
     st.write(df.head())
 
-def displayplot(data,col1,col2,title): 
+def displayplot(): 
     labels = {'Não':0,'Sim':1}
     sizes = data[col2]
     colors = ['#e5ffcc', '#f80032']
