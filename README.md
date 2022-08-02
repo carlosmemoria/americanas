@@ -1,23 +1,18 @@
-## Instruções de acesso
-
-Opções de acesso: 
-1. Deverá ser executado através do link https://github.com/carlosmemoria/americanas/blob/main/americanas.ipynb clicando em **Open in Colab**
-2. Outra opção de acesso é clicar no link https://colab.research.google.com/drive/1paSC4eF1AIWG4JUY_j05a7hSOxoZr-2_?usp=sharing
+# Desafio Americanas/B2W
 
 
+## Instalação do Streamlit
+Você pode usar os arquivo requirements.txt para instalar todas as bibliotecas necessárias, ou se você já tem pandas e numpy, você pode simplesmente instalar streamlit abrindo um prompt de comando / terminal e digitando em `pip install streamlit`
 
-## Atividades realizadas
+## Executando Streamlit
+Uma vez instalado o Streamlit, você pode executar o arquivo selecionado digitando o seguinte no prompt/terminal de comando:
 
-Após a verificação do dataset, foram realizadas as seguintes atividades:
+`streamlit run app_p1.py`
 
-1. Foi gerado um gráfico de pizza e de barras com todas as 466 entradas do dataset
-2. Foi realizada a seleção aleatória de 200 entradas do dataset
-3. Posteriormente foi gerado um gráfico de pizza e de barras com às 200 entradas do dataset
-4. Foi realizada a seleção aleatória de cinquenta por cento das entradas do dataset
-5. Posteriormente foi gerado um gráfico de pizza e de barras com cinquenta por cento das entradas do dataset
-6. Foi utilizada a função train_test_split() do scikit-learn para dividir entre treino e teste
-7. Foi realizada a seleção aleatória de cinquenta por cento das entradas do dataset enviado para y_test
-8. Por fim foi gerando um gráfico de pizza e de barras às entradas de y_test
+## Fontes de dados
+| Nome do arquivo                             | Fonte                       | Link de origem                                                         |
+|---------------------------------------------|-----------------------------|------------------------------------------------------------------------|
+| dataset_cdjr.parquet.gzip                   | Americanas/B2WD             | https://drive.google.com/file/d/1HXq9mczY-5OpFaXK3kk8zAgFEgEgF3jt/view |
 
 ## Licença
 [MIT](https://choosealicense.com/licenses/mit/)
