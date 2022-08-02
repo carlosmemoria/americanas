@@ -1,73 +1,91 @@
-#Import the required Libraries
-import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-
-import plotly.express as px
+import plotly.figure_factory as ff
+import plotly.graph_objects as go
+import streamlit as st
 
 st.set_page_config(layout="wide")
-# Functions for each of the pages
-def home(uploaded_file):
 
-    if uploaded_file:
-        st.header('Comece a explorar os dados usando o menu à esquerda')
-    else:
-        st.header('To begin please upload a file')
+# Data
+df = pd.read_parquet('https://drive.google.com/u/0/uc?id=1HXq9mczY-5OpFaXK3kk8zAgFEgEgF3jt&export=download')
+vars_cat = [var for var in df.columns if var.startswith('cat')]
+vars_cont = [var for var in df.columns if var.startswith('cont')]
 
-def data_describe():
-    st.header('Estatísticas do Dataframe')
-    st.write(df.describe())
+# Graph (Pie Chart in Sidebar)
+df_target = df[['id', 'target']].groupby('target').count() / len(df)
+fig_target = go.Figure(data=[go.Pie(labels=df_target.index,
+                                    values=df_target['id'],
+                                    hole=.3)])
+fig_target.update_layout(showlegend=False,
+                         height=200,
+                         margin={'l': 20, 'r': 60, 't': 0, 'b': 0})
+fig_target.update_traces(textposition='inside', textinfo='label+percent')
 
-def data_header():
-    st.header('Cabeçalho do Dataframe')
-    st.write(df.head())
-	
-def bar_plot():
+# Layout (Sidebar)
+st.sidebar.markdown("## Settings")
+cat_selected = st.sidebar.selectbox('Categorical Variables', vars_cat)
+cont_selected = st.sidebar.selectbox('Continuous Variables', vars_cont)
+cont_multi_selected = st.sidebar.multiselect('Correlation Matrix', vars_cont,
+                                             default=vars_cont)
+st.sidebar.markdown("## Target Variables")
+st.sidebar.plotly_chart(fig_target, use_container_width=True)
 
-    st.header('Gra´fico horizontall')
-    fig = px.bar(x = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
-    y = ['Não atende','Atende'],
-    title=" Tipos de dados ",
-    labels={'x':'Quantidade','y':'Condição'},width=800, height=400)
+# Categorical Variable Bar Chart in Content
+df_cat = df.groupby([cat_selected, 'target']).count()[['id']].reset_index()
 
-    st.plotly_chart(fig)	
+cat0 = df_cat[df_cat['target'] == 0]
+cat1 = df_cat[df_cat['target'] == 1]
 
-#def displayplot(): 
-	
-def interactive_plot():
-    col1, col2 = st.columns(2)
-    
-    x_axis_val = col1.selectbox('Select the X-axis', options=df['target'].value_counts() [1])
-    y_axis_val = col2.selectbox('Select the Y-axis', options=df['target'].value_counts() [0])
+fig_cat = go.Figure(data=[
+    go.Bar(name='target=0', x=cat0[cat_selected], y=cat0['id']),
+    go.Bar(name='target=1', x=cat1[cat_selected], y=cat1['id'])
+])
 
-    plot = px.scatter(df, x=x_axis_val, y=y_axis_val)
-    st.plotly_chart(plot, use_container_width=True)
+fig_cat.update_layout(height=300,
+                      width=500,
+                      margin={'l': 20, 'r': 20, 't': 0, 'b': 0},
+                      legend=dict(
+                          yanchor="top",
+                          y=0.99,
+                          xanchor="right",
+                          x=0.99),
+                      barmode='stack')
+fig_cat.update_xaxes(title_text=None)
+fig_cat.update_yaxes(title_text='# of samples')
 
-# Add a title and intro text
-st.title('Projeto de exploração de dados')
-st.text('Este é um aplicativo web permite a exploração de dados em vários formatos de gráficos')
+# Continuous Variable Distribution in Content
+li_cont0 = df[df['target'] == 0][cont_selected].values.tolist()
+li_cont1 = df[df['target'] == 1][cont_selected].values.tolist()
 
-# Sidebar setup
-st.sidebar.title('Área lateral')
-upload_file = 'https://drive.google.com/u/0/uc?id=1HXq9mczY-5OpFaXK3kk8zAgFEgEgF3jt&export=download'
-#Sidebar navigation
-st.sidebar.title('Navegação')
-options = st.sidebar.radio('Selecione o que deseja exibir:', ['Home', 'Resumo de Dados', 'Cabeçalho de dados', 'Gráfico de barras horizontal', 'Gráfico de dispersão', 'Interactive Plots'])
+cont_data = [li_cont0, li_cont1]
+group_labels = ['target=0', 'target=1']
 
-# Check if file has been uploaded
-if upload_file is not None:
-    df = pd.read_parquet(upload_file)
+fig_cont = ff.create_distplot(cont_data, group_labels,
+                              show_hist=False,
+                              show_rug=False)
+fig_cont.update_layout(height=300,
+                       width=500,
+                       margin={'l': 20, 'r': 20, 't': 0, 'b': 0},
+                       legend=dict(
+                           yanchor="top",
+                           y=0.99,
+                           xanchor="right",
+                           x=0.99)
+                       )
 
-# Navigation options
-if options == 'Home':
-    home(upload_file)
-elif options == 'Resumo de Dados':
-    data_describe()
-elif options == 'Cabeçalho de dados':
-    data_header()
-elif options == 'Gráfico de barras horizontal':	
-	bar_plot()
-elif options == 'Gráfico de dispersão':
-    displayplot()
-elif options == 'Interactive Plots':
-    interactive_plot()
+# Correlation Matrix in Content
+df_corr = df[cont_multi_selected].corr()
+fig_corr = go.Figure([go.Heatmap(z=df_corr.values,
+                                 x=df_corr.index.values,
+                                 y=df_corr.columns.values)])
+fig_corr.update_layout(height=300,
+                       width=1000,
+                       margin={'l': 20, 'r': 20, 't': 0, 'b': 0})
+
+# Layout (Content)
+left_column, right_column = st.columns(2)
+left_column.subheader('Categorical Variable Distribution: ' + cat_selected)
+right_column.subheader('Continuous Variable Distribution: ' + cont_selected)
+left_column.plotly_chart(fig_cat)
+right_column.plotly_chart(fig_cont)
+st.subheader('Correlation Matrix')
+st.plotly_chart(fig_corr)
