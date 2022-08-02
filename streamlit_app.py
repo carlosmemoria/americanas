@@ -37,7 +37,7 @@ def bar_plot():
     st.header('Gra´fico horizontall')
     fig = px.bar(x = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
     y = ['Não atende','Atende'],
-    orientation='h', title=" Tipos de dados ",
+    title=" Tipos de dados ",
     labels={'x':'Quantidade','y':'Condição'},width=800, height=400)
 
     st.plotly_chart(fig)	
