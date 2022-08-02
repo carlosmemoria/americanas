@@ -23,14 +23,12 @@ def data_header():
     st.write(df.head())
 
 def displayplot():
-    st.header('Plot of Data')
-    fig, ax = plt.subplots(1,1)
-    ax.scatter(x= [ df['target'].value_counts() [0], df['target'].value_counts() [1] ], 
-	       y= ['Não atende','Atende'])
-    ax.set_xlabel('target')
-    ax.set_ylabel('target')
+    st.header('Plot of Data') 
     
-    st.pyplot(fig)
+    fig = px.bar(x = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
+    y = ['Não atende','Atende'],
+    orientation='v', title=" Tipos de dados ",
+    labels={'x':'Quantidade','y':'Condição'},width=400, height=800)
 
 def bar_plot():
 
