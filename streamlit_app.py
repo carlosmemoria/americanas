@@ -10,15 +10,6 @@ condTrue = 'Não há ocorrência do evento que desejamos prever em '
 condFalse = 'Existe ocorrência do evento que desejamos prever '
 resposta = 'linhas'
 
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
-
 st.set_page_config(layout="wide")
 # Funções para cada uma das páginas
 def home(uploaded_file):
