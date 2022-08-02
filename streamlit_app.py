@@ -24,7 +24,8 @@ def data_header():
 
 def displayplot(): 
     labels = {'Não':0,'Sim':1}
-    sizes = data[col2]
+    sizes = x = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
+    y = ['Não atende','Atende']
     colors = ['#e5ffcc', '#f80032']
 
     fig1, ax1 = plt.subplots()
