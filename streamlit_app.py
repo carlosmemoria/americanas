@@ -3,7 +3,6 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import sklearn
-
 import plotly.express as px
 
 condTrue = 'Não há ocorrência do evento que desejamos prever em '
