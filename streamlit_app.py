@@ -96,7 +96,7 @@ def bar_plot_scikit():
                                                     test_size=0.5)
     df_y = pd.DataFrame(y_test)	
 
-    st.header('Utilização da função train_test_split()')
+    st.header('Utilização da função train_test_split')
     fig = px.bar(x = [ df_y['target'].value_counts() [0], df_y['target'].value_counts() [1] ],
     y = ['Não atende','Atende'],
     title=" Tipos de dados ",
@@ -122,7 +122,7 @@ st.sidebar.title('Navegação')
 options = st.sidebar.radio('Selecione o que deseja exibir:', ['Home', 'Resumo de Dados', 'Cabeçalho de dados', 'Gráfico de barras horizontal', 
 							      'Seleção aleatória de 200 entradas do dataset', 
 							      'Seleção aleatória de 50% das entradas do dataset',
-							      'Utilização da função train_test_split()'])
+							      'Utilização da função train_test_split'])
 
 # Verifica se o arquivo foi carregado
 if upload_file is not None:
@@ -141,5 +141,5 @@ elif options == 'Seleção aleatória de 200 entradas do dataset':
     bar_plot_select()
 elif options == 'Seleção aleatória de 50% das entradas do dataset':
     bar_plot_select_frac()
-elif options == 'Utilização da função train_test_split()':
+elif options == 'Utilização da função train_test_split':
     bar_plot_scikit()
