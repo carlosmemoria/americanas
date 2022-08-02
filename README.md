@@ -9,6 +9,8 @@ Uma vez instalado o Streamlit, você pode executar o arquivo selecionado digitan
 
 `streamlit run streamlit_app.py`
 
+O projeto também encontra-se hospedado em: https://carlosmemoria-americanas-streamlit-app-a2ga0o.streamlitapp.com/
+
 ## Fontes de dados
 | Nome do arquivo                             | Fonte                       | Link de origem                                                         |
 |---------------------------------------------|-----------------------------|------------------------------------------------------------------------|
