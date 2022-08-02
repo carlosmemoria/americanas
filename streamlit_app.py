@@ -25,9 +25,10 @@ def data_header():
 def displayplot():
     st.header('Plot of Data') 
     
-    fig = px.bar(y = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
-    x = ['Não atende','Atende'], title=" Tipos de dados ",
-    labels={'x':'Quantidade','y':'Condição'},width=800, height=800)
+    #fig = px.bar(y = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
+    fig = px.bar(train, x=[ df['target'].value_counts() [0], df['target'].value_counts() [1] ], y=['Não atende','Atende'], color="Sex", title=" Sobreviventes x Sexo ",
+		 labels={'Sex': 'Sexo', 'Survived': 'Sobreviventes'},width=400, height=400)
+    st.plotly_chart(fig, use_container_width=False, sharing='streamlit')
 
 def bar_plot():
 
