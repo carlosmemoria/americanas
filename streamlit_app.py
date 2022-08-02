@@ -23,11 +23,25 @@ def data_header():
     st.write(df.head())
 
 def displayplot(): 
-    labels = ['Oxygen','Hydrogen','Carbon_Dioxide','Nitrogen']
-    values = [df['target'].value_counts() [0], df['target'].value_counts() [1]]
+	    # Graph (Pie Chart in Sidebar)
+	df_target = df[['id', 'target']].groupby('target').count() / len(df)
+	fig_target = go.Figure(data=[go.Pie(labels=df_target.index,
+					    values=df['target'].value_counts(),
+					    hole=.3)])
+	fig_target.update_layout(showlegend=False,
+				 height=200,
+				 margin={'l': 20, 'r': 60, 't': 0, 'b': 0})
+	fig_target.update_traces(textposition='inside', textinfo='label+percent')
 
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
-    fig.show()
+	# Layout (Sidebar)
+	st.markdown("## Settings")
+	cat_selected = st.selectbox('Categorical Variables', vars_cat)
+	cont_selected = st.selectbox('Continuous Variables', vars_cont)
+	cont_multi_selected = st.multiselect('Correlation Matrix', vars_cont,
+					     default=vars_cont)
+	st.markdown("## Target Variables")
+	st.plotly_chart(fig_target, use_container_width=True)  
+  
 
 def bar_plot():
 
