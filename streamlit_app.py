@@ -11,7 +11,7 @@ vars_cat = [var for var in df.columns if var.startswith('cat')]
 vars_cont = [var for var in df.columns if var.startswith('cont')]
 
 # Graph (Pie Chart in Sidebar)
-df_target = df[['id', 'target']].groupby('target').count() / len(df)
+df_target = df['id', 'target'].groupby('target').count() / len(df)
 fig_target = go.Figure(data=[go.Pie(labels=df_target.index,
                                     values=df_target['id'],
                                     hole=.3)])
