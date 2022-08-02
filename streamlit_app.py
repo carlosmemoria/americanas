@@ -5,6 +5,13 @@ import matplotlib.pyplot as plt
 
 import plotly.express as px
 
+n = pd.value_counts(df['target']) [0]
+e = pd.value_counts(df['target']) [1]
+
+condTrue = 'Não há ocorrência do evento que desejamos prever em '
+condFalse = 'Existe ocorrência do evento que desejamos prever '
+resposta = 'linhas'
+
 st.set_page_config(layout="wide")
 # Functions for each of the pages
 def home(uploaded_file):
@@ -17,6 +24,11 @@ def home(uploaded_file):
 def data_describe():
     st.header('Estatísticas do Dataframe')
     st.write(df.describe())
+	
+	print("\n")
+	print("{}{}{}".format(condTrue,n," "+ resposta))
+	print("{}{}{}".format(condFalse,e," "+ resposta))
+	print("\n")	
 
 def data_header():
     st.header('Cabeçalho do Dataframe')
