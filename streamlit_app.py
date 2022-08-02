@@ -56,7 +56,7 @@ def bar_plot():
 
 #def displayplot(): 
 	
-def bar_plot():
+def bar_plot_select():
     df_sample = df.sample(n=200)	
     st.header('Seleção aleatória de 200 entradas do dataset')
     fig = px.bar(x = [ df_sample['target'].value_counts() [0], df_sample['target'].value_counts() [1] ],
@@ -81,7 +81,7 @@ st.sidebar.title('Área lateral')
 upload_file = 'https://drive.google.com/u/0/uc?id=1HXq9mczY-5OpFaXK3kk8zAgFEgEgF3jt&export=download'
 #Sidebar navigation
 st.sidebar.title('Navegação')
-options = st.sidebar.radio('Selecione o que deseja exibir:', ['Home', 'Resumo de Dados', 'Cabeçalho de dados', 'Gráfico de barras horizontal', 'Gráfico de dispersão', 'Interactive Plots'])
+options = st.sidebar.radio('Selecione o que deseja exibir:', ['Home', 'Resumo de Dados', 'Cabeçalho de dados', 'Gráfico de barras horizontal', 'Seleção aleatória de 200 entradas do dataset', 'Interactive Plots'])
 
 # Check if file has been uploaded
 if upload_file is not None:
@@ -96,7 +96,7 @@ elif options == 'Cabeçalho de dados':
     data_header()
 elif options == 'Gráfico de barras horizontal':	
 	bar_plot()
-elif options == 'Gráfico de dispersão':
-    displayplot()
+elif options == 'Seleção aleatória de 200 entradas do dataset':
+    bar_plot_select()
 elif options == 'Interactive Plots':
     interactive_plot()
