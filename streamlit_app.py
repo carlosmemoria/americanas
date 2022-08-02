@@ -23,8 +23,9 @@ def data_header():
     st.write(df.head())
 
 def displayplot(): 
-    labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
-    sizes = [15, 30, 45, 10]
+    labels = ['Não atende','Atende'],
+    sizes = [x = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
+    y = ['Não atende','Atende']]
     explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
     fig1, ax1 = plt.subplots()
