@@ -24,11 +24,12 @@ def data_header():
 
 def displayplot():
     st.header('Plot of Data') 
-    
-    fig = px.bar(x = ['Não atende','Atende'],
-    y = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
-    orientation='h', title=" Tipos de dados ",
-    labels={'x':'Quantidade','y':'Condição'},width=800, height=400)
+    col1 = st.beta_columns(1)
+    with col1 :	
+	    fig = px.bar(x = ['Não atende','Atende'],
+	    y = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
+	    orientation='h', title=" Tipos de dados ",
+	    labels={'x':'Quantidade','y':'Condição'},width=800, height=400)
 
     st.plotly_chart(fig)
 
