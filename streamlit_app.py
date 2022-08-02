@@ -118,11 +118,11 @@ st.text('Este é um aplicativo web permite a exploração de dados em vários fo
 st.sidebar.title('Barra lateral')
 upload_file = 'https://drive.google.com/u/0/uc?id=1HXq9mczY-5OpFaXK3kk8zAgFEgEgF3jt&export=download'
 #Navegação na barra lateral
-st.sidebar.title('Navegação')
+st.sidebar.title('Menu de navegação')
 options = st.sidebar.radio('Selecione o que deseja exibir:', ['1. Home', '2. Resumo de Dados', '3. Cabeçalho de dados', '4. Gráfico de barras horizontal', 
 							      '5. Seleção aleatória de 200 entradas do dataset', 
 							      '6. Seleção aleatória de 50% das entradas do dataset',
-							      '7. Scikit Learn utilizando a 6° opção'])
+							      '7. Scikit Learn utilizando a 6° opção do menu'])
 
 # Verifica se o arquivo foi carregado
 if upload_file is not None:
@@ -141,5 +141,5 @@ elif options == '5. Seleção aleatória de 200 entradas do dataset':
     bar_plot_select()
 elif options == '6. Seleção aleatória de 50% das entradas do dataset':
     bar_plot_select_frac()
-elif options == '7. Scikit Learn utilizando a 6° opção':
+elif options == '7. Scikit Learn utilizando a 6° opção do menu':
     bar_plot_scikit()
