@@ -24,11 +24,10 @@ def home(uploaded_file):
 def data_describe():
     st.header('Estatísticas do Dataframe')
     st.write(df.describe())
-	
-	print("\n")
-	print("{}{}{}".format(condTrue,n," "+ resposta))
-	print("{}{}{}".format(condFalse,e," "+ resposta))
-	print("\n")	
+    print("\n")
+    print("{}{}{}".format(condTrue,n," "+ resposta))
+    print("{}{}{}".format(condFalse,e," "+ resposta))
+    print("\n")	
 
 def data_header():
     st.header('Cabeçalho do Dataframe')
