@@ -6,6 +6,15 @@ import sklearn
 
 import plotly.express as px
 
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 condTrue = 'Não há ocorrência do evento que desejamos prever em '
 condFalse = 'Existe ocorrência do evento que desejamos prever '
 resposta = 'linhas'
