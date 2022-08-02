@@ -94,7 +94,7 @@ def bar_plot_scikit():
                                                     df_sample['target'],
                                                     stratify=df_sample['target'],
                                                     test_size=0.5)
-    df_y = pd.DataFrame(y_test)	
+    df_y = df.DataFrame(y_test)	
 
     st.header('Utilização da função train_test_split')
     fig = px.bar(x = [ df_y['target'].value_counts() [0], df_y['target'].value_counts() [1] ],
