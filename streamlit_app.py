@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 
 import plotly.express as px
 
-n = pd.value_counts(df['target']) [0]
-e = pd.value_counts(df['target']) [1]
+n = df['target'].value_counts() [0]
+e = df['target'].value_counts() [1]
 
 condTrue = 'Não há ocorrência do evento que desejamos prever em '
 condFalse = 'Existe ocorrência do evento que desejamos prever '
