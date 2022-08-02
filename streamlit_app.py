@@ -54,7 +54,6 @@ def bar_plot():
     st.write("{}{}{}".format(condTrue,n," "+ resposta))
     st.write("{}{}{}".format(condFalse,e," "+ resposta))
 
-#def displayplot(): 
 	
 def bar_plot_select():
     df_sample = df.sample(n=200)	
@@ -71,6 +70,23 @@ def bar_plot_select():
 
     st.write("{}{}{}".format(condTrue,n," "+ resposta))
     st.write("{}{}{}".format(condFalse,e," "+ resposta))	
+	
+def bar_plot_select_frac():
+    df_sample = df.sample(frac=0.5)	
+    st.header('Seleção aleatória de 50% das entradas do dataset')
+    fig = px.bar(x = [ df_sample['target'].value_counts() [0], df_sample['target'].value_counts() [1] ],
+    y = ['Não atende','Atende'],
+    title=" Tipos de dados ",
+    labels={'x':'Quantidade','y':'Condição'},width=800, height=400)
+
+    st.plotly_chart(fig)	
+
+    n = df_sample['target'].value_counts() [0]
+    e = df_sample['target'].value_counts() [1]
+
+    st.write("{}{}{}".format(condTrue,n," "+ resposta))
+    st.write("{}{}{}".format(condFalse,e," "+ resposta))	
+
 
 # Add a title and intro text
 st.title('Projeto de exploração de dados')
@@ -81,7 +97,9 @@ st.sidebar.title('Área lateral')
 upload_file = 'https://drive.google.com/u/0/uc?id=1HXq9mczY-5OpFaXK3kk8zAgFEgEgF3jt&export=download'
 #Sidebar navigation
 st.sidebar.title('Navegação')
-options = st.sidebar.radio('Selecione o que deseja exibir:', ['Home', 'Resumo de Dados', 'Cabeçalho de dados', 'Gráfico de barras horizontal', 'Seleção aleatória de 200 entradas do dataset', 'Interactive Plots'])
+options = st.sidebar.radio('Selecione o que deseja exibir:', ['Home', 'Resumo de Dados', 'Cabeçalho de dados', 'Gráfico de barras horizontal', 
+							      'Seleção aleatória de 200 entradas do dataset', 
+							      'Seleção aleatória de 50% das entradas do dataset'])
 
 # Check if file has been uploaded
 if upload_file is not None:
@@ -98,5 +116,5 @@ elif options == 'Gráfico de barras horizontal':
 	bar_plot()
 elif options == 'Seleção aleatória de 200 entradas do dataset':
     bar_plot_select()
-elif options == 'Interactive Plots':
-    interactive_plot()
+elif options == 'Seleção aleatória de 50% das entradas do dataset':
+    bar_plot_select_frac()
