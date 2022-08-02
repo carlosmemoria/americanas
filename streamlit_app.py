@@ -31,7 +31,6 @@ def displayplot(data,col1,col2,title):
     ax1.pie(sizes, labels=labels, colors=colors,
                 autopct='%1.1f%%', shadow=True, startangle=140, 
             labeldistance =1.2)
-    plt.title( title )
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
     st.pyplot(fig1)
