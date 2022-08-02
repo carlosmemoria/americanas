@@ -21,28 +21,7 @@ def data_summary():
 def data_header():
     st.header('Cabeçalho do Dataframe')
     st.write(df.head())
-
-def displayplot(): 
-	    # Graph (Pie Chart in Sidebar)
-	df_target = df[['target', 'target']].groupby('target').count() / len(df)
-	fig_target = go.Figure(data=[go.Pie(labels=df_target.index,
-					    values=df['target'].value_counts(),
-					    hole=.3)])
-	fig_target.update_layout(showlegend=False,
-				 height=200,
-				 margin={'l': 20, 'r': 60, 't': 0, 'b': 0})
-	fig_target.update_traces(textposition='inside', textinfo='label+percent')
-
-	# Layout (Sidebar)
-	st.markdown("## Settings")
-	cat_selected = st.selectbox('Categorical Variables', vars_cat)
-	cont_selected = st.selectbox('Continuous Variables', vars_cont)
-	cont_multi_selected = st.multiselect('Correlation Matrix', vars_cont,
-					     default=vars_cont)
-	st.markdown("## Target Variables")
-	st.plotly_chart(fig_target, use_container_width=True)  
-  
-
+	
 def bar_plot():
 
     st.header('Gra´fico horizontall')
@@ -52,6 +31,8 @@ def bar_plot():
     labels={'x':'Quantidade','y':'Condição'},width=800, height=400)
 
     st.plotly_chart(fig)	
+
+def displayplot(): 
 	
 def interactive_plot():
     #col1, col2 = st.columns(2)
@@ -71,7 +52,7 @@ st.sidebar.title('Área lateral')
 upload_file = 'https://drive.google.com/u/0/uc?id=1HXq9mczY-5OpFaXK3kk8zAgFEgEgF3jt&export=download'
 #Sidebar navigation
 st.sidebar.title('Navegação')
-options = st.sidebar.radio('Selecione o que deseja exibir:', ['Home', 'Resumo de Dados', 'Cabeçalho de dados', 'Gráfico de dispersão', 'Gráfico de barras horizontal', 'Interactive Plots'])
+options = st.sidebar.radio('Selecione o que deseja exibir:', ['Home', 'Resumo de Dados', 'Cabeçalho de dados', 'Gráfico de barras horizontal', 'Gráfico de dispersão', 'Interactive Plots'])
 
 # Check if file has been uploaded
 if upload_file is not None:
@@ -84,9 +65,9 @@ elif options == 'Resumo de Dados':
     data_summary()
 elif options == 'Cabeçalho de dados':
     data_header()
-elif options == 'Gráfico de dispersão':
-    displayplot()
 elif options == 'Gráfico de barras horizontal':	
 	bar_plot()
+elif options == 'Gráfico de dispersão':
+    displayplot()
 elif options == 'Interactive Plots':
     interactive_plot()
