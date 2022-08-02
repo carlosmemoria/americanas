@@ -41,7 +41,7 @@ def data_header():
 
 def bar_plot():
 
-    st.header('Gráfico horizontall')
+    st.header('Gráfico horizontal')
     fig = px.bar(x = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
     y = ['Não atende','Atende'],
     title=" Tipos de dados ",
