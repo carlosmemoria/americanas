@@ -31,7 +31,7 @@ def displayplot():
 
 def bar_plot():
 
-    #Tipos de variaveis
+    st.header('Gra´fico horizontall')
     fig = px.bar(x = [ df['target'].value_counts() [0], df['target'].value_counts() [1] ],
     y = ['Não atende','Atende'],
     orientation='h', title=" Tipos de dados ",
