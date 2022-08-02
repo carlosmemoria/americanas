@@ -14,7 +14,7 @@ def home(uploaded_file):
     else:
         st.header('To begin please upload a file')
 
-def data_summary():
+def data_describe():
     st.header('Estatísticas do Dataframe')
     st.write(df.describe())
 
@@ -32,7 +32,7 @@ def bar_plot():
 
     st.plotly_chart(fig)	
 
-def displayplot(): 
+#def displayplot(): 
 	
 def interactive_plot():
     col1, col2 = st.columns(2)
@@ -62,7 +62,7 @@ if upload_file is not None:
 if options == 'Home':
     home(upload_file)
 elif options == 'Resumo de Dados':
-    data_summary()
+    data_describe()
 elif options == 'Cabeçalho de dados':
     data_header()
 elif options == 'Gráfico de barras horizontal':	
